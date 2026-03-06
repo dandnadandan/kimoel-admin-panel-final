@@ -1,0 +1,573 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 12px 32px;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-fallback {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2d8f4e, #4caf50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.header-email {
+  font-size: 12px;
+  color: #888;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.header-link:hover {
+  color: #2d8f4e;
+}
+
+.header-link.logout {
+  color: #e74c3c;
+}
+
+.header-link.logout:hover {
+  color: #c0392b;
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Status Cards */
+.status-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.card-icon {
+  font-size: 14px;
+  color: #888;
+}
+
+.card-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+}
+
+.card-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* Card Variants */
+.card-pending {
+  background: #fffde7;
+  border-color: #fff9c4;
+}
+
+.icon-pending { color: #f9a825; }
+.value-pending { color: #f9a825; }
+
+.card-reviewed {
+  background: #e3f2fd;
+  border-color: #bbdefb;
+}
+
+.icon-reviewed { color: #1976d2; }
+.value-reviewed { color: #1976d2; }
+
+.card-approved {
+  background: #e8f5e9;
+  border-color: #c8e6c9;
+}
+
+.icon-approved { color: #2e7d32; }
+.value-approved { color: #2e7d32; }
+
+.card-rejected {
+  background: #fce4ec;
+  border-color: #f8bbd0;
+}
+
+.icon-rejected { color: #c62828; }
+.value-rejected { color: #c62828; }
+
+/* Invoice Section */
+.invoice-section {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.invoice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.invoice-header .header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  color: #555;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.refresh-btn i {
+  font-size: 12px;
+}
+
+.invoice-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #f3f4f6;
+  color: #555;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background: #e5e7eb;
+}
+
+.filter-btn.active {
+  background: #f9a825;
+  color: #fff;
+}
+
+/* Invoice Table */
+.invoice-table-container {
+  min-height: 200px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  display: none;
+}
+
+.invoice-table.visible {
+  display: table;
+}
+
+.invoice-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.invoice-table td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #333;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.invoice-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.pending {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.status-badge.reviewed {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.status-badge.approved {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.rejected {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+/* Action Buttons */
+.action-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-view {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.btn-view:hover {
+  background: #bbdefb;
+}
+
+.btn-approve {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.btn-approve:hover {
+  background: #c8e6c9;
+}
+
+.btn-reject {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.btn-reject:hover {
+  background: #f8bbd0;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #aaa;
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  color: #ddd;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #999;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  overflow: hidden;
+  animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #999;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.modal-close:hover {
+  background: #f3f4f6;
+  color: #333;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 13px;
+}
+
+.modal-detail-row:last-child {
+  border-bottom: none;
+}
+
+.modal-detail-label {
+  color: #888;
+  font-weight: 500;
+}
+
+.modal-detail-value {
+  color: #333;
+  font-weight: 600;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 20px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.modal-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-btn-approve {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.modal-btn-approve:hover {
+  background: #1b5e20;
+}
+
+.modal-btn-reject {
+  background: #c62828;
+  color: #fff;
+}
+
+.modal-btn-reject:hover {
+  background: #b71c1c;
+}
+
+.modal-btn-close {
+  background: #e5e7eb;
+  color: #555;
+}
+
+.modal-btn-close:hover {
+  background: #d1d5db;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .status-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .invoice-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .filter-tabs {
+    flex-wrap: wrap;
+  }
+
+  .header {
+    padding: 12px 16px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .action-btns {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .status-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .header-link span {
+    display: none;
+  }
+}

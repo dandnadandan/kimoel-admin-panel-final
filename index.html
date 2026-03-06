@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimoel Trading - Admin Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.7/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <img src="assets/logo.png" alt="Kimoel" class="logo-img" onerror="this.outerHTML='<div class=\'logo-fallback\'><i class=\'fas fa-chart-line\'></i></div>'">
+      <div class="header-info">
+        <h1 class="header-title">Admin Dashboard</h1>
+        <span class="header-email">admin123@gmail.com</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="#" class="header-link">
+        <i class="fas fa-home"></i> Website
+      </a>
+      <a href="#" class="header-link logout" id="logoutBtn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Status Cards -->
+    <div class="status-cards">
+      <div class="card">
+        <div class="card-label"><i class="fas fa-file-alt"></i> Total</div>
+        <div class="card-value" id="totalCount">0</div>
+      </div>
+      <div class="card card-pending">
+        <div class="card-label"><i class="fas fa-clock"></i> Pending</div>
+        <div class="card-value" id="pendingCount">0</div>
+      </div>
+      <div class="card card-reviewed">
+        <div class="card-label"><i class="fas fa-eye"></i> Reviewed</div>
+        <div class="card-value" id="reviewedCount">0</div>
+      </div>
+      <div class="card card-approved">
+        <div class="card-label"><i class="fas fa-check-circle"></i> Approved</div>
+        <div class="card-value" id="approvedCount">0</div>
+      </div>
+      <div class="card card-rejected">
+        <div class="card-label"><i class="fas fa-times-circle"></i> Rejected</div>
+        <div class="card-value" id="rejectedCount">0</div>
+      </div>
+    </div>
+
+    <!-- Invoice Requests -->
+    <div class="invoice-section">
+      <div class="invoice-header">
+        <h2 class="invoice-title">Invoice Requests</h2>
+        <div class="header-right">
+          <button class="refresh-btn" id="refreshBtn">
+            <i class="fas fa-sync-alt"></i> Refresh
+          </button>
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="reviewed">Reviewed</button>
+            <button class="filter-btn" data-filter="approved">Approved</button>
+            <button class="filter-btn" data-filter="rejected">Rejected</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="invoice-body">
+        <table class="invoice-table" id="invoiceTable">
+          <thead>
+            <tr>
+              <th>Invoice ID</th>
+              <th>User</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="invoiceTableBody"></tbody>
+        </table>
+
+        <div class="empty-state" id="emptyState">
+          <i class="fas fa-file-alt"></i>
+          <p>No invoice requests found.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Invoice Details</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
