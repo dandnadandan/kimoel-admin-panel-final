@@ -147,12 +147,7 @@ function renderInvoices() {
     <tr>
       <td><strong>${inv.reference}</strong></td>
       <td>${inv.user}</td>
-      <td>
-        <div class="product-info">
-          <div class="product-name">${inv.product_name}</div>
-          <div class="product-id">ID: ${inv.product_id}</div>
-        </div>
-      </td>
+      <td>${inv.product_name}</td>
       <td>${formatDate(inv.date)}</td>
       <td><span class="status-badge ${inv.status}">${capitalize(inv.status)}</span></td>
       <td>
@@ -195,11 +190,7 @@ function viewInvoice(id) {
       <span class="modal-detail-value">${inv.city}</span>
     </div>
     <div class="modal-detail-row">
-      <span class="modal-detail-label">Product ID</span>
-      <span class="modal-detail-value">${inv.product_id}</span>
-    </div>
-    <div class="modal-detail-row">
-      <span class="modal-detail-label">Product Name</span>
+      <span class="modal-detail-label">Product</span>
       <span class="modal-detail-value">${inv.product_name}</span>
     </div>
     <div class="modal-detail-row">
