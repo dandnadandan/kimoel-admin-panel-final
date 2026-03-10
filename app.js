@@ -75,6 +75,9 @@ async function fetchInvoices() {
       phone: row.customer_phone || row.user_phone || row.phone || "",
       city: row.customer_city || row.user_city || row.city || "",
       description: row.notes || row.description || row.details || "",
+      // Product information
+      product_id: row.product_id || row.productid || row.productId || row.product || "N/A",
+      product_name: row.product_name || row.productname || row.productName || row.product || "Unknown Product",
       date: row.created_at,
       status: row.status
     };
@@ -144,6 +147,12 @@ function renderInvoices() {
     <tr>
       <td><strong>${inv.reference}</strong></td>
       <td>${inv.user}</td>
+      <td>
+        <div class="product-info">
+          <div class="product-name">${inv.product_name}</div>
+          <div class="product-id">ID: ${inv.product_id}</div>
+        </div>
+      </td>
       <td>${formatDate(inv.date)}</td>
       <td><span class="status-badge ${inv.status}">${capitalize(inv.status)}</span></td>
       <td>
@@ -184,6 +193,14 @@ function viewInvoice(id) {
     <div class="modal-detail-row">
       <span class="modal-detail-label">City</span>
       <span class="modal-detail-value">${inv.city}</span>
+    </div>
+    <div class="modal-detail-row">
+      <span class="modal-detail-label">Product ID</span>
+      <span class="modal-detail-value">${inv.product_id}</span>
+    </div>
+    <div class="modal-detail-row">
+      <span class="modal-detail-label">Product Name</span>
+      <span class="modal-detail-value">${inv.product_name}</span>
     </div>
     <div class="modal-detail-row">
       <span class="modal-detail-label">Description</span>
