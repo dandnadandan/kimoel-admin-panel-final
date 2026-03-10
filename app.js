@@ -63,16 +63,26 @@ async function fetchInvoices() {
     return;
   }
 
-  invoices = data.map(row => ({
-    id: row.id,
-    user: row.user_name,
-    email: row.user_email,
-    phone: row.user_phone || "",
-    city: row.user_city || "",
-    description: row.description || "",
-    date: row.created_at,
-    status: row.status
-  }));
+  console.log('Raw data from Supabase:', data);
+  
+  invoices = data.map(row => {
+    console.log('Processing row:', row);
+    const mapped = {
+      id: row.id,
+      reference: row.reference_number || row.reference || row.ref || "N/A",
+      user: row.customer_name || row.user_name || row.name || row.full_name || row.user || "Unknown",
+      email: row.customer_email || row.user_email || row.email || row.email_address || "No email",
+      phone: row.customer_phone || row.user_phone || row.phone || "",
+      city: row.customer_city || row.user_city || row.city || "",
+      description: row.notes || row.description || row.details || "",
+      date: row.created_at,
+      status: row.status
+    };
+    console.log('Mapped invoice:', mapped);
+    return mapped;
+  });
+  
+  console.log('Final invoices array:', invoices);
 
   updateCounts();
   renderInvoices();
@@ -133,7 +143,7 @@ function renderInvoices() {
 
   invoiceTableBody.innerHTML = filtered.map(inv => `
     <tr>
-      <td><strong>${inv.id.substring(0, 8)}</strong></td>
+      <td><strong>${inv.reference}</strong></td>
       <td>${inv.user}</td>
       <td>${formatDate(inv.date)}</td>
       <td><span class="status-badge ${inv.status}">${capitalize(inv.status)}</span></td>
@@ -157,8 +167,8 @@ function viewInvoice(id) {
 
   modalBody.innerHTML = `
     <div class="modal-detail-row">
-      <span class="modal-detail-label">Invoice ID</span>
-      <span class="modal-detail-value">${inv.id.substring(0, 8)}</span>
+      <span class="modal-detail-label">Reference Number</span>
+      <span class="modal-detail-value">${inv.reference}</span>
     </div>
     <div class="modal-detail-row">
       <span class="modal-detail-label">User</span>
