@@ -121,7 +121,6 @@ async function updateStatus(id, newStatus) {
 function updateCounts() {
   document.getElementById("totalCount").textContent = invoices.length;
   document.getElementById("pendingCount").textContent = invoices.filter(i => i.status === "pending").length;
-  document.getElementById("reviewedCount").textContent = invoices.filter(i => i.status === "reviewed").length;
   document.getElementById("approvedCount").textContent = invoices.filter(i => i.status === "approved").length;
   document.getElementById("rejectedCount").textContent = invoices.filter(i => i.status === "rejected").length;
 }
@@ -150,7 +149,7 @@ function renderInvoices() {
       <td>
         <div class="action-btns">
           <button class="action-btn btn-view" onclick="viewInvoice('${inv.id}')">View</button>
-          ${inv.status === "pending" || inv.status === "reviewed" ? `
+          ${inv.status === "pending" ? `
             <button class="action-btn btn-approve" onclick="updateStatus('${inv.id}', 'approved')">Approve</button>
             <button class="action-btn btn-reject" onclick="updateStatus('${inv.id}', 'rejected')">Reject</button>
           ` : ""}
@@ -200,7 +199,7 @@ function viewInvoice(id) {
     </div>
   `;
 
-  if (inv.status === "pending" || inv.status === "reviewed") {
+  if (inv.status === "pending") {
     modalFooter.innerHTML = `
       <button class="modal-btn modal-btn-reject" onclick="updateStatus('${inv.id}', 'rejected'); closeModal();">Reject</button>
       <button class="modal-btn modal-btn-approve" onclick="updateStatus('${inv.id}', 'approved'); closeModal();">Approve</button>
